@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import "./components/Navbar";
 import Navbar from "./components/Navbar";
 import SearchView from "./components/SearchView";
+import MoviesView from "./components/MoviesView";
 
 function App() {
   const [searchResult, setSearchResult] = useState([]);
@@ -36,6 +37,7 @@ function App() {
             <SearchView keyword={searchText} searchResult={searchResult} />
           }
         />
+        <Route path="/movies/:id" element={<MoviesView/>}/>
       </Routes>
     </div>
   );
