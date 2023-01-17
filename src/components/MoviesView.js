@@ -1,10 +1,15 @@
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Hero from './Hero'
 
 const MoviesView = ()=>{
     const {id} = useParams();
+    const [movieDetails, setMovieDetails] = useState({});
 
-    console.log(`Params id is ${id}`)
+    useEffect(()=>{
+        console.log('Id is changed', id)
+    }, [id])
+
 
     return <Hero text='Movie detail view'/>
 }

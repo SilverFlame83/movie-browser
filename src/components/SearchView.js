@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 import Hero from "./Hero";
 
 //https://api.themoviedb.org/3/search/movie?api_key=ab166ff82684910ae3565621aea04d62&language=en-US&query=star%wars&page=1&include_adult=false
 const SearchView = ({ keyword, searchResult }) => {
   const MovieCard = ({ movie }) => {
+    const dataUrl= movie.id
     const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     return (
       <>
@@ -15,9 +18,9 @@ const SearchView = ({ keyword, searchResult }) => {
             />
             <div className="card-body">
               <h5 className="card-title">{movie.original_title}</h5>
-              <a href="#" className="btn btn-primary">
+              <Link to={`/movies/${dataUrl}`} className="btn btn-primary">
                 Show details
-              </a>
+              </Link>
             </div>
           </div>
         </div>
