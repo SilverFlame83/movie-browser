@@ -9,7 +9,7 @@ const Navbar = ({ searchText, setSearchText }) => {
 
   };
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-info">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Movies

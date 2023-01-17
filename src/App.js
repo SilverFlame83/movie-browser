@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 import SearchView from "./components/SearchView";
 
 function App() {
-  const [searchResult, setSearchResult] = useState("Hello from App");
+  const [searchResult, setSearchResult] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -19,8 +19,8 @@ function App() {
       )
         .then((response) => response.json())
         .then((data) => {
-          const http= data.results.map(data => data.original_title)
-        setSearchResult(http)});
+          //const http= data.results.map(data => data.original_title)
+        setSearchResult(data.results)});
     }
   }, [searchText]);
 

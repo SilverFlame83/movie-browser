@@ -1,10 +1,10 @@
-import capture from '../assets/capture.jpg';
+import movie from '../assets/movie.jpg';
 import Hero from './Hero';
 
 const Home = () => {
 return <>
 <Hero text='Hello from home page'/>
-<img src={capture} alt='movie'/>
+<img src={movie} alt='movie'/>
 </>
 };
 
