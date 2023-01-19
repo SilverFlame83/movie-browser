@@ -1,6 +1,6 @@
 const Hero = ({text}) => {
   return (
-    <header className="bg-dark text-primary fs-6">
+    <header className="bg-dark text-primary fs-6 p-5">
       <h1>{text}</h1>
     </header>
   );

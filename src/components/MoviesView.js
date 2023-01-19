@@ -17,7 +17,7 @@ const MoviesView = () => {
         setTimeout(()=>{
             setMovieDetails(data);
           setIsLoading(false); 
-        }, 2000)
+        },1000)
       });
   }, [id]);
 
@@ -25,13 +25,33 @@ const MoviesView = () => {
     if (isLoading){
        return <Hero text='Loading...'/>
     }
-    if (!isLoading){
-        return <Hero text={movieDetails.original_title}/>
+    if (movieDetails){
+      const posterPath= `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
+        return <>
+        <Hero text={movieDetails.original_title}/>
+        <div className="container my-5">
+          <div className="row">
+            <div className="col-md-3">
+                <img src={posterPath} alt={movieDetails.title} className="img-fluid shadow rounded"/>
+            </div>
+            <div className="col-md-9">
+                <h3>{movieDetails.original_title}</h3>
+                <p className="lead">
+                    {movieDetails.overview}
+                </p>
+            </div>
+          </div>
+
+        </div>
+        </> 
+
     }
   }
 
   return <>
     {movieDetailsView()}
+    {/* {isLoading && <Hero text='Loading...'/>}
+    {!isLoading && <Hero text={movieDetails.original_title}/>} */}
   </>
 };
 
