@@ -14,45 +14,52 @@ const MoviesView = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setTimeout(()=>{
-            setMovieDetails(data);
-          setIsLoading(false); 
-        },1000)
+        setTimeout(() => {
+          setMovieDetails(data);
+          setIsLoading(false);
+        },0);
       });
   }, [id]);
 
-  function movieDetailsView (){
-    if (isLoading){
-       return <Hero text='Loading...'/>
+  function movieDetailsView() {
+    if (isLoading) {
+      return <Hero text="Loading..." />;
     }
-    if (movieDetails){
-      const posterPath= `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
-        return <>
-        <Hero text={movieDetails.original_title}/>
-        <div className="container my-5">
-          <div className="row">
-            <div className="col-md-3">
-                <img src={posterPath} alt={movieDetails.title} className="img-fluid shadow rounded"/>
-            </div>
-            <div className="col-md-9">
+    if (movieDetails) {
+      const budget = movieDetails.budget.toLocaleString();
+      const posterPath = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
+      const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`
+      return (
+        <>
+          <Hero text={movieDetails.original_title} backdrop={backdropUrl}/>
+          <div className="container my-5">
+            <div className="row">
+              <div className="col-md-3">
+                <img
+                  src={posterPath}
+                  alt={movieDetails.title}
+                  className="img-fluid shadow rounded"
+                />
+              </div>
+              <div className="col-md-9">
                 <h3>{movieDetails.original_title}</h3>
-                <p className="lead">
-                    {movieDetails.overview}
-                </p>
+                <p className="lead">{movieDetails.overview}</p>
+                <p>Budget: {budget}</p>
+              </div>
             </div>
           </div>
-
-        </div>
-        </> 
-
+        </>
+      );
     }
   }
 
-  return <>
-    {movieDetailsView()}
-    {/* {isLoading && <Hero text='Loading...'/>}
+  return (
+    <>
+      {movieDetailsView()}
+      {/* {isLoading && <Hero text='Loading...'/>}
     {!isLoading && <Hero text={movieDetails.original_title}/>} */}
-  </>
+    </>
+  );
 };
 
 export default MoviesView;

@@ -1,7 +1,11 @@
-const Hero = ({text}) => {
+const Hero = ({ text, backdrop }) => {
   return (
-    <header className="bg-dark text-primary fs-6 p-5">
-      <h1>{text}</h1>
+    <header className="bg-dark text-primary fs-6 p-5 hero-container">
+      <h1 className="hero-text">{text}</h1>
+      <div
+        className="hero-backdrop"
+        style={{ backgroundImage: `url(${backdrop})` }}
+      ></div>
     </header>
   );
 };
